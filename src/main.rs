@@ -28,7 +28,7 @@ fn main() {
 }
 
 fn ms_to_next_clock_hour(now: DateTime<Local>) -> u64 {
-    let minutes_left = 59 - now.minute();
+    let minutes_left = 9 - now.minute() % 10;
     let seconds_left = 59 - now.second();
     let milliseconds_left = 999 - now.timestamp_subsec_millis().clamp(0, 999);
     let sleep_time = minutes_left * 60 * 1000 + seconds_left * 1000 + milliseconds_left;
